@@ -1,27 +1,33 @@
-import React from 'react';
-import './style.scss'
+import Item from './Item';
+import style from './Lista.module.scss';
 
-function Lista(){
-
-    const tarefas = [
-        {tarefa: 'JavaScript', tempo: '05:00:00'},
-        {tarefa: '.Net', tempo: '02:00:00'}
-    ]
-    
-    return(
-        <div className='listaTarefas'>
-            <h2>Estudos do dia</h2>
-            <div className='item'>
-                {tarefas.map((item, index) => 
-                (
-                    <div key={index} className='item'>
-                        <h3>{item.tarefa}</h3>
-                        <p>{item.tempo}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    )
+function Lista() {
+  const tarefas = [{
+    tarefa: 'React',
+    tempo: '02:00:00'
+  }, {
+    tarefa: 'Javascript',
+    tempo: '01:00:00'
+  }, {
+    tarefa: "Typescript",
+    tempo: "03:00:00"
+  }];
+  
+  return (
+    <aside className={style.listaTarefas}>
+      <h2> Estudos do dia </h2>
+      <ul>
+        {tarefas.map((item, index) => (
+          <Item key={index}
+            tarefa={item.tarefa}
+            tempo={item.tempo}
+            // ou
+            // {...item} //importa todas as propriedades do objeto.
+          />
+        ))}
+      </ul>
+    </aside>
+  )
 }
 
 export default Lista;
